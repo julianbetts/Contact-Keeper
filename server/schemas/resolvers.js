@@ -48,7 +48,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addContact: async (parent, { contactText }, context) => {
       if (context.user) {
         const contact = await Contact.create({
           contactText,
