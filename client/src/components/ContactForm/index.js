@@ -80,9 +80,9 @@ const ContactForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="thoughtText"
+                name="contactName"
                 placeholder="Here's a new thought..."
-                value={thoughtText}
+                value={contactName}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -91,7 +91,7 @@ const ContactForm = () => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Thought
+                Add Contact
               </button>
             </div>
             {error && (
@@ -111,4 +111,4 @@ const ContactForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default ContactForm;
