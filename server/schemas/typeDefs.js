@@ -11,17 +11,15 @@ const typeDefs = gql`
 
   type Contact {
     _id: ID
-    contactText: String
-    contactAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    contactName: String
+    contactPhone: String
+    contactEmail: String
+    notes: [Note]!
   }
 
-  type Comment {
+  type Note {
     _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    notesText: String
   }
 
   type Auth {
