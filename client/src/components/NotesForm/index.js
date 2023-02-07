@@ -2,29 +2,29 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_COMMENT } from '../../utils/mutations';
+import { ADD_NOTE } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-  const CommentForm = ({ thoughtId }) => {
-  const [commentText, setCommentText] = useState('');
+  const NoteForm = ({ contactId }) => {
+  const [noteText, setNoteText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT);
+  const [addNote, { error }] = useMutation(ADD_NOTE);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addComment({
+      const { data } = await addNote({
         variables: {
           contactId,
-          commentText,
-          commentAuthor: Auth.getProfile().data.username,
+          noteText,
+          noteAuthor: Auth.getProfile().data.username,
         },
       });
 
-      setCommentText('');
+      setNoteText('');
     } catch (err) {
       console.error(err);
     }
@@ -33,15 +33,15 @@ import Auth from '../../utils/auth';
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'commentText' && value.length <= 280) {
-      setCommentText(value);
+    if (name === 'noteText' && value.length <= 280) {
+      setNoteText(value);
       setCharacterCount(value.length);
     }
   };
 
   return (
     <div>
-      <h4>What are your thoughts on this contact?</h4>
+      <h4>What are your notes on this contact?</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -59,9 +59,9 @@ import Auth from '../../utils/auth';
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="commentText"
-                placeholder="Add your comment..."
-                value={commentText}
+                name="noteText"
+                placeholder="Add your note..."
+                value={noteText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -85,4 +85,4 @@ import Auth from '../../utils/auth';
   );
 };
 
-export default CommentForm;
+export default NoteForm;

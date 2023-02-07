@@ -63,7 +63,7 @@ const ContactForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>Your online phonebook.</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -81,7 +81,7 @@ const ContactForm = () => {
             <div className="col-12 col-lg-9">
               <textarea
                 name="contactName"
-                placeholder="Here's a new thought..."
+                placeholder="Here's a new contact..."
                 value={contactName}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
