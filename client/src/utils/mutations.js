@@ -28,13 +28,8 @@ export const ADD_CONTACT = gql`
   mutation addContact($contactText: String!) {
     addContact(contactText: $contactText) {
       _id
-      contactText
-      contactAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
+      
+      
     }
   }
 `;

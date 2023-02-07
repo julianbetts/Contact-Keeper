@@ -41,7 +41,6 @@ const ContactForm = () => {
       const { data } = await addContact({
         variables: {
           contactText,
-          contactAuthor: Auth.getProfile().data.username,
         },
       });
 
