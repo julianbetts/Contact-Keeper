@@ -64,23 +64,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { contactId, commentText }, context) => {
-      if (context.user) {
-        return Contact.findOneAndUpdate(
-          { _id: contactId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
     removeContact: async (parent, { contactId }, context) => {
       if (context.user) {
         const contact = await Contact.findOneAndDelete({
@@ -94,23 +77,6 @@ const resolvers = {
         );
 
         return contact;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeComment: async (parent, { contactId, commentId }, context) => {
-      if (context.user) {
-        return Contact.findOneAndUpdate(
-          { _id: contactId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
       }
       throw new AuthenticationError('You need to be logged in!');
     },

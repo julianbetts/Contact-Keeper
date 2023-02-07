@@ -5,21 +5,13 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    contact: [Contact]!
+    contacts: [Contact]!
   }
 
   type Contact {
     _id: ID
     contactText: String
     contactAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
     createdAt: String
   }
 
@@ -40,9 +32,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addContact(contactText: String!): Contact
-    addComment(contactId: ID!, commentText: String!): Contact
     removeContact(contactId: ID!): Contact
-    removeComment(contactId: ID!, commentId: ID!): Contact
   }
 `;
 
