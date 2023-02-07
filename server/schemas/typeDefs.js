@@ -10,9 +10,15 @@ const typeDefs = gql`
 
   type Contact {
     _id: ID
-    contactText: String
-    contactAuthor: String
-    createdAt: String
+    contactName: String
+    contactPhone: String
+    contactEmail: String
+    notes: [Note]!
+  }
+
+  type Note {
+    _id: ID
+    notesText: String
   }
 
   type Auth {
@@ -32,7 +38,9 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addContact(contactText: String!): Contact
+    addNote(contactId: ID!, noteText: String!): Contact
     removeContact(contactId: ID!): Contact
+    removeNote(contactId: ID!, noteId: ID!): Contact
   }
 `;
 

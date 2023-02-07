@@ -1,40 +1,26 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
 const contactSchema = new Schema({
-  contactText: {
+  contactName: {
     type: String,
-    required: 'You need to leave a contact',
+    required: true,
     minlength: 1,
     maxlength: 280,
     trim: true,
-  },
-  contactAuthor: {
+  },  
+  contactPhone: {
     type: String,
-    required: true,
     trim: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
+  contactEmail: {
+    type: String,
+    trim: true,
   },
-  comments: [
+  notes: [
     {
-      commentText: {
+      notesText: {
         type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-      commentAuthor: {
-        type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
+        trim: true,
       },
     },
   ],

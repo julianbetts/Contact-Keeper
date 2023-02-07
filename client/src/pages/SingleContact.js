@@ -4,8 +4,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-// import CommentList from '../components/CommentList';
-// import CommentForm from '../components/CommentForm';
+import NotesList from '../components/NotesList';
+import NotesForm from '../components/NotesForm';
 
 import { QUERY_SINGLE_CONTACT } from '../utils/queries';
 
@@ -45,12 +45,12 @@ const SingleContact = () => {
         </blockquote>
       </div>
 
-      {/* <div className="my-5">
-        <CommentList comments={contact.comments} />
+      <div className="my-5">
+        <NotesList notes={contact.notes} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <CommentForm contactId={contact._id} />
-      </div> */}
+        <NotesForm contactId={contact._id} />
+      </div>
     </div>
   );
 };
