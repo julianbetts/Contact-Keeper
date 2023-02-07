@@ -19,6 +19,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  userPhone: {
+    type: String,
+    trim: true,
+  },
+  userEmail: {
+    type: String,
+    trim: true,
+  },
   contacts: [
     {
       type: Schema.Types.ObjectId,

@@ -8,7 +8,7 @@ import { QUERY_CONTACTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const ContactForm = () => {
-  const [contactText, setContactText] = useState('');
+  const [contactName, setContactName] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -40,12 +40,13 @@ const ContactForm = () => {
     try {
       const { data } = await addContact({
         variables: {
-          contactText,
-          contactAuthor: Auth.getProfile().data.username,
+          contactName,
+          contactPhone,
+          contactEmail,
         },
       });
 
-      setContactText('');
+      setContactName('');
     } catch (err) {
       console.error(err);
     }
@@ -54,8 +55,8 @@ const ContactForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'contactText' && value.length <= 280) {
-      setContactText(value);
+    if (name === 'contactName' && value.length <= 280) {
+      setContactName(value);
       setCharacterCount(value.length);
     }
   };
@@ -79,9 +80,9 @@ const ContactForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="contactText"
-                placeholder="Here's a new contact..."
-                value={contactText}
+                name="contactName"
+                placeholder="Here's a new thought..."
+                value={contactName}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}

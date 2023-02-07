@@ -31,25 +31,24 @@ export const ADD_CONTACT = gql`
       contactText
       contactAuthor
       createdAt
-      comments {
+      notes {
         _id
-        commentText
+        notesText
       }
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($contactId: ID!, $commentText: String!) {
-    addComment(contactId: $contactId, commentText: $commentText) {
+export const ADD_NOTE = gql`
+  mutation addNote($contactId: ID!, $notesText: String!) {
+    addNotes(contactId: $contactId, notesText: $notesText) {
       _id
-      contactText
-      contactAuthor
-      createdAt
-      comments {
+      contactName
+      contactPhone
+      contactEmail
+      notes {
         _id
-        commentText
-        createdAt
+        notesText
       }
     }
   }
