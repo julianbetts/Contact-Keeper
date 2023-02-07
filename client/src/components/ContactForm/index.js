@@ -62,7 +62,7 @@ const ContactForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>Creat new Contact</h3>
 
       {Auth.loggedIn() ? (
         <>

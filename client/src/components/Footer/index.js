@@ -16,16 +16,8 @@ const Footer = () => {
           </button>
         )}
         <h4>
-          Made with{' '}
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-            ❤️
-          </span>{' '}
-          by the Tech Thoughts team.
+          Made 
+          by Group 6
         </h4>
       </div>
     </footer>
